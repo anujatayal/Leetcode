@@ -14,7 +14,7 @@ class Solution:
                 while no+1 in setn: #go till max no in sequence
                     count+=1
                     no=no+1
-            # print(no,count)
+            #print(no,count)
             if count>lces: #store longest sequence
                 lces=count
         return (lces)
