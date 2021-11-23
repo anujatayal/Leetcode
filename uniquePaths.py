@@ -11,6 +11,7 @@
 # 3. Down -> Right -> Down
 #Case1: Recursion
 #Time Limit Exceeded
+
 class Solution:
     def uniquePaths(self, m: int, n: int) -> int:
         if m==1 and n==1:
@@ -19,3 +20,20 @@ class Solution:
             return 0
         else:
             return self.uniquePaths(m-1,n)+self.uniquePaths(m,n-1)
+
+# memoization
+
+class Solution:
+    def memoization(self,memo,m:int,n:int)->int:
+        if m==0 or n==0:
+            return 0
+        elif str(m)+","+str(n) in memo:
+            return memo[str(m)+","+str(n)]
+        else:
+            memo[str(m)+","+str(n)]=self.memoization(memo,m-1,n)+self.memoization(memo,m,n-1)
+            return memo[str(m)+","+str(n)]
+    def uniquePaths(self, m: int, n: int) -> int:
+        memo={}
+        memo["1,1"]=1
+        return self.memoization(memo,m,n)
+        

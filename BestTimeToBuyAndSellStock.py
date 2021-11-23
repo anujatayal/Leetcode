@@ -29,3 +29,16 @@ class Solution:
             profitCurrent=max(prices[buyIndex+1:])-prices[buyIndex]
             profit=max(profit,profitCurrent)
         return(profit)
+
+#dp
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
+        buy=prices[0]
+        bestProfit=0
+        for i in prices:
+            profit=i-buy
+            if profit>bestProfit:
+                bestProfit=profit
+            if i<buy:
+                buy=i
+        return bestProfit
